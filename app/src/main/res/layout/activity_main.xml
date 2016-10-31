@@ -10,7 +10,118 @@
     tools:context="ca.qc.cegepdrummondville.applicationdehockey.MainActivity">
 
     <TextView
+        android:text="LOCAL"
+        android:textSize="80px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="36dp"
+        android:id="@+id/textView2" />
+
+    <TextView
+        android:text="VISITEUR"
+        android:textSize="80px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="87dp"
+        android:layout_marginEnd="87dp" />
+
+    <TextView
+        android:text="TIME"
+        android:textSize="80px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView"
+        android:layout_toLeftOf="@+id/textView"
+        android:layout_toStartOf="@+id/textView"
+        android:layout_marginRight="651dp"
+        android:layout_marginEnd="651dp"
+        android:id="@+id/textView3" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_marginTop="45dp"
+        android:id="@+id/editText3"
+        android:text="123"
+        android:textSize="80px"
+        android:textAlignment="center"
+        android:layout_alignRight="@+id/textView2"
+        android:layout_alignEnd="@+id/textView2" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_alignTop="@+id/editText3"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView"
+        android:id="@+id/editText4"
+        android:text="321"
+        android:textSize="80px"
+        android:textAlignment="center"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_marginLeft="369dp"
+        android:layout_marginStart="369dp"
+        android:id="@+id/editText5"
+        android:text="20:00"
+        android:textSize="80px"
+        android:textAlignment="center"
+        android:layout_below="@+id/textView3"
+        android:layout_toRightOf="@+id/textView2"
+        android:layout_toEndOf="@+id/textView2" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Pénalité local"
+        android:ems="10"
+        android:id="@+id/editText8"
+        android:textSize="80px"
+        android:textAlignment="center"
+        android:layout_alignBaseline="@+id/editText6"
+        android:layout_alignBottom="@+id/editText6"
+        android:layout_toRightOf="@+id/editText5"
+        android:layout_toEndOf="@+id/editText5"
+        android:layout_marginLeft="250dp"
+        android:layout_marginStart="250dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Pénalité visiteur"
+        android:ems="10"
+        android:layout_marginTop="129dp"
+        android:id="@+id/editText6"
+        android:textSize="80px"
+        android:textAlignment="center"
+        android:layout_below="@+id/editText3"
+        android:layout_toLeftOf="@+id/textView3"
+        android:layout_toStartOf="@+id/textView3"
+        android:layout_marginRight="312dp"
+        android:layout_marginEnd="312dp" />
 </RelativeLayout>
