@@ -144,4 +144,12 @@
         android:layout_toRightOf="@+id/editText5"
         android:layout_toEndOf="@+id/editText5" />
 
+    <Button
+        android:text="Ajouter une pénalité"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
