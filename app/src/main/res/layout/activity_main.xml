@@ -35,18 +35,6 @@
         android:layout_marginRight="87dp"
         android:layout_marginEnd="87dp" />
 
-    <TextView
-        android:text="TIME"
-        android:textSize="80px"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView"
-        android:layout_toLeftOf="@+id/textView"
-        android:layout_toStartOf="@+id/textView"
-        android:layout_marginRight="651dp"
-        android:layout_marginEnd="651dp"
-        android:id="@+id/textView3" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -78,20 +66,17 @@
         android:layout_alignLeft="@+id/textView"
         android:layout_alignStart="@+id/textView" />
 
-    <EditText
+    <TextView
+        android:text="TIME"
+        android:textSize="80px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:layout_marginLeft="369dp"
-        android:layout_marginStart="369dp"
-        android:id="@+id/editText5"
-        android:text="20:00"
-        android:textSize="80px"
-        android:textAlignment="center"
-        android:layout_below="@+id/textView3"
-        android:layout_toRightOf="@+id/textView2"
-        android:layout_toEndOf="@+id/textView2" />
+        android:layout_marginRight="184dp"
+        android:layout_marginEnd="184dp"
+        android:id="@+id/textView3"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/editText5"
+        android:layout_alignEnd="@+id/editText5" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -102,12 +87,12 @@
         android:id="@+id/editText8"
         android:textSize="80px"
         android:textAlignment="center"
-        android:layout_alignBaseline="@+id/editText6"
-        android:layout_alignBottom="@+id/editText6"
-        android:layout_toRightOf="@+id/editText5"
-        android:layout_toEndOf="@+id/editText5"
-        android:layout_marginLeft="250dp"
-        android:layout_marginStart="250dp" />
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="111dp"
+        android:layout_marginEnd="111dp"
+        android:layout_below="@+id/editText3"
+        android:layout_toLeftOf="@+id/textView3"
+        android:layout_toStartOf="@+id/textView3" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -115,13 +100,48 @@
         android:inputType="textPersonName"
         android:text="Pénalité visiteur"
         android:ems="10"
-        android:layout_marginTop="129dp"
         android:id="@+id/editText6"
         android:textSize="80px"
         android:textAlignment="center"
-        android:layout_below="@+id/editText3"
-        android:layout_toLeftOf="@+id/textView3"
-        android:layout_toStartOf="@+id/textView3"
-        android:layout_marginRight="312dp"
-        android:layout_marginEnd="312dp" />
+        android:layout_alignBaseline="@+id/editText8"
+        android:layout_alignBottom="@+id/editText8"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignStart="@+id/textView3"
+        android:layout_marginLeft="205dp"
+        android:layout_marginStart="205dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText5"
+        android:text="20:00"
+        android:textSize="80px"
+        android:textAlignment="center"
+        android:layout_below="@+id/textView3"
+        android:layout_toRightOf="@+id/textView2"
+        android:layout_toEndOf="@+id/textView2"
+        android:layout_marginLeft="33dp"
+        android:layout_marginStart="33dp" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/editText8"
+        android:layout_alignRight="@id/editText8"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/editText6"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_toRightOf="@+id/editText5"
+        android:layout_toEndOf="@+id/editText5" />
+
 </RelativeLayout>
