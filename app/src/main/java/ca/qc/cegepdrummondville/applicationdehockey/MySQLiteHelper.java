@@ -13,6 +13,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class MySQLiteHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "hockeyApp.db";
@@ -52,7 +55,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     // penalties table name
     private static final String TABLE_PENALTIES = "penalties";
 
-    // Books Table Columns names
+    // Penalties Table Columns names
     private static final String KEY_ID = "_id";
     private static final String KEY_CODE = "code";
     private static final String KEY_TIME = "time";
@@ -62,7 +65,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     private static final String[] COLUMNS = {KEY_ID,KEY_CODE,KEY_TIME,KEY_LOCAL,KEY_PLAYER_NUMBER};
 
     public void addPenalty(Penalty penalty){
-        //Log.d("addBook", book.toString());
         // 1. get reference to writable DB
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -102,67 +104,67 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
-        // 4. build book object
+        // 4. build penalty object
         Penalty penalty = new Penalty();
         penalty.setId(Integer.parseInt(cursor.getString(0)));
         penalty.setCode(cursor.getString(1));
         penalty.setTime(cursor.getInt(2));
         penalty.setPlayer_number(cursor.getInt(3));
-        penalty.setLocal(cursor.(4));
+        penalty.setLocal(cursor.getInt(4));
 
-        Log.d("getBook("+id+")", book.toString());
-
-        // 5. return book
-        return book;
+        // 5. return penalty
+        return penalty;
     }
 
-    // Get All Books
-    public List<Book> getAllBooks() {
-        List<Book> books = new LinkedList<Book>();
+    // Get All Penalties
+    public List<Penalty> getAllPenalties() {
+        List<Penalty> penalties = new LinkedList<Penalty>();
 
         // 1. build the query
-        String query = "SELECT  * FROM " + TABLE_BOOKS;
+        String query = "SELECT  * FROM " + TABLE_PENALTIES;
 
         // 2. get reference to writable DB
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
 
-        // 3. go over each row, build book and add it to list
-        Book book = null;
+        // 3. go over each row, build penalty and add it to list
+        Penalty penalty = null;
         if (cursor.moveToFirst()) {
             do {
-                book = new Book();
-                book.setId(Integer.parseInt(cursor.getString(0)));
-                book.setTitle(cursor.getString(1));
-                book.setAuthor(cursor.getString(2));
+                penalty = new Penalty();
+                penalty.setId(Integer.parseInt(cursor.getString(0)));
+                penalty.setCode(cursor.getString(1));
+                penalty.setTime(cursor.getInt(2));
+                penalty.setPlayer_number(cursor.getInt(3));
+                penalty.setLocal(cursor.getInt(4));
 
-                // Add book to books
-                books.add(book);
+                // Add penalty to penalties
+                penalties.add(penalty);
             } while (cursor.moveToNext());
         }
 
-        Log.d("getAllBooks()", books.toString());
-
-        // return books
-        return books;
+        // return penalties
+        return penalties;
     }
 
-    // Updating single book
-    public int updateBook(Book book) {
+    // Updating single penalty
+    public int updatePenalty(Penalty penalty) {
 
         // 1. get reference to writable DB
         SQLiteDatabase db = this.getWritableDatabase();
 
         // 2. create ContentValues to add key "column"/value
         ContentValues values = new ContentValues();
-        values.put("title", book.getTitle()); // get title
-        values.put("author", book.getAuthor()); // get author
+        values.put("title", penalty.getCode()); // get title
+        values.put("author", penalty.getTime()); // get author
+        values.put("author", penalty.getPlayer_number()); // get author
+        values.put("author", penalty.isLocal()); // get author
 
         // 3. updating row
-        int i = db.update(TABLE_BOOKS, //table
+        int i = db.update(TABLE_PENALTIES, //table
                 values, // column/value
                 KEY_ID+" = ?", // selections
-                new String[] { String.valueOf(book.getId()) }); //selection args
+                new String[] { String.valueOf(penalty.getId()) }); //selection args
 
         // 4. close
         db.close();
@@ -171,21 +173,21 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     }
 
-    // Deleting single book
-    public void deleteBook(Book book) {
+    // Deleting single penalty
+    public void deletePenalty(Penalty penalty) {
 
         // 1. get reference to writable DB
         SQLiteDatabase db = this.getWritableDatabase();
 
         // 2. delete
-        db.delete(TABLE_BOOKS,
+        db.delete(TABLE_PENALTIES,
                 KEY_ID+" = ?",
-                new String[] { String.valueOf(book.getId()) });
+                new String[] { String.valueOf(penalty.getId()) });
 
         // 3. close
         db.close();
 
-        Log.d("deleteBook", book.toString());
+        Log.d("deletePenalty", penalty.toString());
 
     }
 }

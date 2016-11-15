@@ -11,11 +11,11 @@ public class Penalty {
     private String code;
     private int time;
     private int player_number;
-    private boolean local;
+    private int local;
 
     public Penalty(){}
 
-    public Penalty(String code, int time,int player_number, boolean local) {
+    public Penalty(String code, int time,int player_number, int local) {
         super();
         this.code = code;
         this.time = time;
@@ -58,10 +58,12 @@ public class Penalty {
     }
 
     public boolean isLocal() {
-        return local;
+        return (local > 0);
     }
 
-    public void setLocal(boolean local) {
+    public int getLocal() { return local; }
+
+    public void setLocal(int local) {
         this.local = local;
     }
 }
