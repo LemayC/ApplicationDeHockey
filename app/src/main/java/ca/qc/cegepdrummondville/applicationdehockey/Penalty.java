@@ -1,5 +1,8 @@
 package ca.qc.cegepdrummondville.applicationdehockey;
 
+import android.content.Context;
+import android.widget.Chronometer;
+
 /**
  * Created by 9565960 on 2016-11-14.
  */
@@ -7,7 +10,6 @@ package ca.qc.cegepdrummondville.applicationdehockey;
 public class Penalty {
 
     private int id;
-
     private String code;
     private int time;
     private int player_number;
