@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:text="Penalite Locale"
+        android:layout_height="136dp"
+        android:id="@+id/Button1"
+        android:layout_x="-2dp"
+        android:layout_y="-1dp"
+        android:layout_width="300dp" />
+
+    <Button
+        android:text="Penalite Vititeur"
+        android:id="@+id/button3"
+        android:layout_x="731dp"
+        android:layout_y="-2dp"
+        android:layout_height="136dp"
+        android:layout_width="300dp" />
+
+    <ListView
+        android:layout_x="725dp"
+        android:layout_y="129dp"
+        android:layout_width="300dp"
+        android:layout_height="500dp" />
+
+    <ListView
+        android:layout_x="0dp"
+        android:layout_y="132dp"
+        android:layout_width="300dp"
+        android:layout_height="500dp" />
+
+    <Button
+        android:text="Retour"
+        android:layout_width="199dp"
+        android:layout_height="62dp"
+        android:layout_x="410dp"
+        android:layout_y="570dp"
+        android:id="@+id/button4" />
+
+</AbsoluteLayout>

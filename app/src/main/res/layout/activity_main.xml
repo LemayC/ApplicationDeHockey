@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ca.qc.cegepdrummondville.applicationdehockey.MainActivity">
+    tools:context="ca.qc.cegepdrummondville.applicationdehockey.MainActivity"
+    android:background="@color/white">
 
     <TextView
         android:text="LOCAL"
@@ -20,7 +21,8 @@
         android:layout_marginLeft="50dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="36dp"
-        android:id="@+id/textView2" />
+        android:id="@+id/textView2"
+        android:background="@color/white"/>
 
     <TextView
         android:text="VISITEUR"
@@ -33,7 +35,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="87dp"
-        android:layout_marginEnd="87dp" />
+        android:layout_marginEnd="87dp"
+        android:background="@color/white"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -45,46 +48,19 @@
         android:layout_alignStart="@+id/textView2"
         android:layout_marginTop="45dp"
         android:id="@+id/editText3"
-        android:text="123"
+        android:text="0"
         android:textSize="80px"
         android:textAlignment="center"
         android:layout_alignRight="@+id/textView2"
         android:layout_alignEnd="@+id/textView2" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:layout_alignTop="@+id/editText3"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView"
-        android:id="@+id/editText4"
-        android:text="321"
-        android:textSize="80px"
-        android:textAlignment="center"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView" />
-
     <TextView
-        android:text="TIME"
-        android:textSize="80px"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="184dp"
-        android:layout_marginEnd="184dp"
-        android:id="@+id/textView3"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/editText5"
-        android:layout_alignEnd="@+id/editText5" />
-
-    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:text="Pénalité local"
         android:ems="10"
-        android:id="@+id/editText8"
+        android:id="@+id/TextView8"
         android:textSize="80px"
         android:textAlignment="center"
         android:layout_marginTop="20dp"
@@ -94,28 +70,27 @@
         android:layout_toLeftOf="@+id/textView3"
         android:layout_toStartOf="@+id/textView3" />
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:text="Pénalité visiteur"
         android:ems="10"
-        android:id="@+id/editText6"
+        android:id="@+id/TextView6"
         android:textSize="80px"
         android:textAlignment="center"
-        android:layout_alignBaseline="@+id/editText8"
-        android:layout_alignBottom="@+id/editText8"
+        android:layout_alignBaseline="@+id/TextView8"
+        android:layout_alignBottom="@+id/TextView8"
         android:layout_alignLeft="@+id/textView3"
         android:layout_alignStart="@+id/textView3"
         android:layout_marginLeft="205dp"
         android:layout_marginStart="205dp" />
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText5"
+        android:id="@+id/TextView5"
         android:text="20:00"
         android:textSize="80px"
         android:textAlignment="center"
@@ -128,21 +103,21 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/editText8"
-        android:layout_alignRight="@id/editText8"
+        android:layout_below="@+id/TextView8"
+        android:layout_alignRight="@id/TextView8"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/editText6"
+        android:layout_below="@+id/TextView6"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="15dp"
         android:layout_marginEnd="15dp"
-        android:layout_toRightOf="@+id/editText5"
-        android:layout_toEndOf="@+id/editText5" />
+        android:layout_alignLeft="@+id/TextView6"
+        android:layout_alignStart="@+id/TextView6" />
 
     <Button
         android:text="Ajouter une pénalité"
@@ -150,6 +125,30 @@
         android:layout_height="wrap_content"
         android:id="@+id/button2"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:elevation="0dp"
+        android:onClick="AjoutPenalite"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText4"
+        android:text="0"
+        android:textSize="80px"
+        android:textAlignment="center"
+        android:layout_above="@+id/TextView8"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView" />
+
+    <TextView
+        android:text="TIME"
+        android:textSize="80px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

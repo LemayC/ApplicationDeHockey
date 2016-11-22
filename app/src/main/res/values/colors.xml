@@ -3,4 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="leaves">#15591f</color>
+    <color name="blue_sky">#42dced</color>
+    <color name="white">#FFFFFF</color>
+    <color name="dunno">#123123</color>
 </resources>
