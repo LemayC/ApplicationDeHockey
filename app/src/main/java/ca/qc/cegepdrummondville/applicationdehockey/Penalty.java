@@ -11,7 +11,7 @@ public class Penalty {
 
     private int id;
     private String code;
-    private int time;
+    private int time; //En secondes
     private int player_number;
     private int local;
 
