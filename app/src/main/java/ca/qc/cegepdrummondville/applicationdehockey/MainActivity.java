@@ -1,19 +1,12 @@
 package ca.qc.cegepdrummondville.applicationdehockey;
 
-<<<<<<< HEAD
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-=======
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Chronometer;
 
 import java.util.ArrayList;
->>>>>>> 519bb45cd211b59eb564a57f6d8c2701d0f5ca72
 
 public class MainActivity extends AppCompatActivity {
     private final long timeInPeriod = 30000; // En millisecondes
