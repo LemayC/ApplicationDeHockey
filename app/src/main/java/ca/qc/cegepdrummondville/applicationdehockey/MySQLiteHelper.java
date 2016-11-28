@@ -116,6 +116,41 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         return penalty;
     }
 
+    // Retourne la dernière pénalité de l'équipe (local ou visiteur)
+    //
+    // param local boolean
+    public Penalty getLastPenalty(boolean isLocal){
+
+        // 1. get reference to readable DB
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // 2. build query
+        Cursor cursor =
+                db.query(TABLE_PENALTIES, // a. table
+                        COLUMNS, // b. column names
+                        " local = " + String.valueOf(isLocal), // c. selections
+                        null, // d. selections args
+                        null, // e. group by
+                        null, // f. having
+                        null, // g. order by
+                        null); // h. limit
+
+        // 3. if we got results get the first one
+        if (cursor != null)
+            cursor.moveToLast();
+
+        // 4. build penalty object
+        Penalty penalty = new Penalty();
+        penalty.setId(Integer.parseInt(cursor.getString(0)));
+        penalty.setCode(cursor.getString(1));
+        penalty.setTime(cursor.getInt(2));
+        penalty.setPlayer_number(cursor.getInt(3));
+        penalty.setLocal(cursor.getInt(4));
+
+        // 5. return penalty
+        return penalty;
+    }
+
     // Get All Penalties
     public List<Penalty> getAllPenalties() {
         List<Penalty> penalties = new LinkedList<Penalty>();
