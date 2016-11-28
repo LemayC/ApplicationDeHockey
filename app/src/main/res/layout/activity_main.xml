@@ -125,7 +125,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/button2"
         android:layout_alignParentBottom="true"
-<<<<<<< HEAD
         android:layout_centerHorizontal="true"
         android:elevation="0dp"
         android:onClick="AjoutPenalite"/>
@@ -151,8 +150,5 @@
         android:id="@+id/textView3"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
-=======
-        android:layout_centerHorizontal="true"/>
->>>>>>> 519bb45cd211b59eb564a57f6d8c2701d0f5ca72
 
 </RelativeLayout>
