@@ -63,7 +63,9 @@ public class Penalty {
         return (local > 0);
     }
 
-    public int getLocal() { return local; }
+    public int getLocal() {
+        return local;
+    }
 
     public void setLocal(int local) {
         this.local = local;

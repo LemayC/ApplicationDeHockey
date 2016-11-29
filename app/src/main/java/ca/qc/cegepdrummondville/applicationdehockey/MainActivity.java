@@ -1,21 +1,17 @@
 package ca.qc.cegepdrummondville.applicationdehockey;
 
-<<<<<<< HEAD
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-=======
+import android.app.Activity;
 import android.os.CountDownTimer;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Chronometer;
 
 import java.util.ArrayList;
->>>>>>> 519bb45cd211b59eb564a57f6d8c2701d0f5ca72
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private final long timeInPeriod = 30000; // En millisecondes
     private final long timeInSecond = 1000; // En millisecondes
     private final int penaltiesPerSide = 3; // En millisecondes
@@ -24,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList<Penalty> visitorPenaltyList;
     public CountDownTimer masterTimer;
 
+    Button ajoutPenalite;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +38,20 @@ public class MainActivity extends AppCompatActivity {
                 //
             }
         };
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        //Initialisation du bouton
+
+        ajoutPenalite = (Button) findViewById(R.id.button2);
+
+        ajoutPenalite.setOnClickListener(MainActivity.this);
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 
     public void updateTimer() {
@@ -112,8 +123,4 @@ public class MainActivity extends AppCompatActivity {
         //Ici, on ajoute chaque pénalités dans la bonne ListView.
     }
 
-    public void AjoutPenalite (View view){
-        Intent intent = new Intent (this, MainActivity.class);
-        startActivity(intent);
-    }
 }
