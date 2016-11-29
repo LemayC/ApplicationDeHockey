@@ -17,17 +17,27 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class MySQLiteHelper extends SQLiteOpenHelper {
+    // penalties table name
+    private static final String TABLE_PENALTIES = "penalties";
 
+    // Penalties Table Columns names
+    private static final String KEY_ID = "_id";
+    private static final String KEY_CODE = "code";
+    private static final String KEY_TIME = "time";
+    private static final String KEY_LOCAL = "local";
+    private static final String KEY_PLAYER_NUMBER = "player_number";
+
+    private static final String[] COLUMNS = {KEY_ID,KEY_CODE,KEY_TIME,KEY_LOCAL,KEY_PLAYER_NUMBER};
     private static final String DATABASE_NAME = "hockeyApp.db";
     private static final int DATABASE_VERSION = 1;
 
     // Database creation sql statement
-    private static final String DATABASE_CREATE = "CREATE TABLE penalties ("+
-            "_id                   PRIMARY KEY NOT NULL," +
-            "code          VARCHAR NOT NULL," +
-            "time          INT     NOT NULL," +
-            "player_number INT     NOT NULL," +
-            "local         BOOLEAN NOT NULL;";
+    private static final String DATABASE_CREATE = "CREATE TABLE " + TABLE_PENALTIES + " ( "+
+            KEY_ID + " PRIMARY KEY NOT NULL," +
+            KEY_CODE +  " VARCHAR NOT NULL," +
+            KEY_TIME + " INT NOT NULL," +
+            KEY_PLAYER_NUMBER + " INT NOT NULL," +
+            KEY_LOCAL + " BOOLEAN NOT NULL );";
 
     public MySQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -43,7 +53,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         Log.w(MySQLiteHelper.class.getName(),
                 "Mise à jour depuis la version " + oldVersion + " vers "
                         + newVersion + ", ce qui supprimera toutes les données.");
-        db.execSQL("DROP TABLE IF EXISTS penalties");
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PENALTIES);
         onCreate(db);
     }
 //---------------------------------------------------------------------
@@ -51,18 +61,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     /**
      * CRUD operations (create "add", read "get", update, delete) penalty + get all penalties + delete all penalties
      */
-
-    // penalties table name
-    private static final String TABLE_PENALTIES = "penalties";
-
-    // Penalties Table Columns names
-    private static final String KEY_ID = "_id";
-    private static final String KEY_CODE = "code";
-    private static final String KEY_TIME = "time";
-    private static final String KEY_LOCAL = "local";
-    private static final String KEY_PLAYER_NUMBER = "player_number";
-
-    private static final String[] COLUMNS = {KEY_ID,KEY_CODE,KEY_TIME,KEY_LOCAL,KEY_PLAYER_NUMBER};
 
     public void addPenalty(Penalty penalty){
         // 1. get reference to writable DB
@@ -93,7 +91,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         Cursor cursor =
                 db.query(TABLE_PENALTIES, // a. table
                         COLUMNS, // b. column names
-                        " id = ?", // c. selections
+                        KEY_ID + " = ?", // c. selections
                         new String[] { String.valueOf(id) }, // d. selections args
                         null, // e. group by
                         null, // f. having
@@ -125,27 +123,22 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         // 2. build query
-        Cursor cursor =
-                db.query(TABLE_PENALTIES, // a. table
-                        COLUMNS, // b. column names
-                        " local = " + String.valueOf(isLocal), // c. selections
-                        null, // d. selections args
-                        null, // e. group by
-                        null, // f. having
-                        null, // g. order by
-                        null); // h. limit
+        Cursor cursor = db.rawQuery(
+                "SELECT * FROM " + TABLE_PENALTIES + " WHERE " + KEY_LOCAL + " = '" + String.valueOf(isLocal) + "'", null);
 
         // 3. if we got results get the first one
-        if (cursor != null)
+        Penalty penalty = null;
+        if (cursor.getCount() > 0) {
             cursor.moveToLast();
 
-        // 4. build penalty object
-        Penalty penalty = new Penalty();
-        penalty.setId(Integer.parseInt(cursor.getString(0)));
-        penalty.setCode(cursor.getString(1));
-        penalty.setTime(cursor.getInt(2));
-        penalty.setPlayer_number(cursor.getInt(3));
-        penalty.setLocal(cursor.getInt(4));
+            // 4. build penalty object
+            penalty = new Penalty();
+            penalty.setId(Integer.parseInt(cursor.getString(0)));
+            penalty.setCode(cursor.getString(1));
+            penalty.setTime(cursor.getInt(2));
+            penalty.setPlayer_number(cursor.getInt(3));
+            penalty.setLocal(cursor.getInt(4));
+        }
 
         // 5. return penalty
         return penalty;
