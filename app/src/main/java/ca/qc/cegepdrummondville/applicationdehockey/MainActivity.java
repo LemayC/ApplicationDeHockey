@@ -1,24 +1,32 @@
 package ca.qc.cegepdrummondville.applicationdehockey;
 
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
 import android.widget.Button;
-import android.widget.Chronometer;
 
 import java.util.ArrayList;
+import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private final long timeInPeriod = 30000; // En millisecondes
+
+    private final long timeInPeriod = 120000; // En millisecondes
     private final long timeInSecond = 1000; // En millisecondes
     private final int penaltiesPerSide = 3; // En millisecondes
+    private TextView masterTimerView;
     private MySQLiteHelper sqliteHelper;
     public ArrayList<Penalty> localPenaltyList;
     public ArrayList<Penalty> visitorPenaltyList;
     public CountDownTimer masterTimer;
+    public int masterTimerTime;
 
     Button ajoutPenalite;
     @Override
@@ -28,7 +36,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         sqliteHelper = new MySQLiteHelper(this);
         localPenaltyList = new ArrayList<Penalty>(penaltiesPerSide);
         visitorPenaltyList = new ArrayList<Penalty>(penaltiesPerSide);
-        masterTimer = new CountDownTimer(timeInPeriod, timeInSecond) {
+        masterTimerTime = (int) Math.floor(timeInPeriod / timeInSecond);
+        masterTimerView = (TextView) findViewById(R.id.TextView5);
+        masterTimer = new CountDownTimer(timeInPeriod + timeInSecond, timeInSecond) {
             public void onTick(long millisUntilFinished) {
                 updatePenalties();
                 updateTimer();
@@ -38,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //
             }
         };
-
+        masterTimer.start();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -56,6 +66,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void updateTimer() {
         //Ici on change le texte affiché par le timer pour afficher le bon temps;
+        masterTimerTime = masterTimerTime - 1;
+        long minutes = TimeUnit.SECONDS.toMinutes(masterTimerTime);
+        long secondes = masterTimerTime - (minutes * 60);
+        String timeString = String.format("%02d:%02d", minutes, secondes);
+        masterTimerView.setText(String.valueOf(timeString));
     }
 
     /*
@@ -75,8 +90,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         visitorPenaltyList.clear();
 
         //Ici, le temps des pénalités sont diminués. Les pénalités qui sont terminées ne sont pas réajoutées dans les listes. RIP
-        for (int i = penaltyList.size(); i >= 0; i --) {
-            penalty = penaltyList.get(i);
+        for (int i = penaltyList.size(); i > 0; i --) {
+            penalty = penaltyList.get(i - 1);
             if (penalty.getTime() <= 1) {
                 penalty.setTime(penalty.getTime() - 1);
                 if (penalty.getLocal() > 0) {
@@ -122,5 +137,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void updatePenaltyListView() {
         //Ici, on ajoute chaque pénalités dans la bonne ListView.
     }
-
 }
