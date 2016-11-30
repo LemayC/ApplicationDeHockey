@@ -123,16 +123,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Penalty penalty = new Penalty(code, time, player_number, local);
         sqliteHelper.addPenalty(penalty);
         if (local > 0) {
-            //Wow la duplication de code nice
-            if (localPenaltyList.size() < penaltiesPerSide) {
-                localPenaltyList.add(penalty);
+            if (localPenaltyList.size() >= penaltiesPerSide) {
+                sqliteHelper.updatePenalty(localPenaltyList.get(penaltiesPerSide - 1));
+                localPenaltyList.remove(penaltiesPerSide - 1);
             }
+            localPenaltyList.add(0, penalty);
         } else {
-            //Wow la duplication de code nice
-            if (visitorPenaltyList.size() < penaltiesPerSide) {
-                visitorPenaltyList.add(penalty);
+            if (visitorPenaltyList.size() >= penaltiesPerSide) {
+                sqliteHelper.updatePenalty(visitorPenaltyList.get(penaltiesPerSide - 1));
+                visitorPenaltyList.remove(penaltiesPerSide - 1);
             }
+            visitorPenaltyList.add(0, penalty);
         }
+
         //La vue est mise à jour avec les nouvelles listes.
         updatePenaltyListView();
     }

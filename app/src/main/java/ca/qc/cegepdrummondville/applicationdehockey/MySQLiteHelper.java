@@ -82,6 +82,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /*
     public Penalty getPenalty(int id){
 
         // 1. get reference to readable DB
@@ -113,6 +114,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         // 5. return penalty
         return penalty;
     }
+    */
 
     // Retourne la dernière pénalité de l'équipe (local ou visiteur)
     //
@@ -144,6 +146,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         return penalty;
     }
 
+    /*
     // Get All Penalties
     public List<Penalty> getAllPenalties() {
         List<Penalty> penalties = new LinkedList<Penalty>();
@@ -174,6 +177,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         // return penalties
         return penalties;
     }
+    */
 
     // Updating single penalty
     public int updatePenalty(Penalty penalty) {
