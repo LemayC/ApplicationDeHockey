@@ -22,6 +22,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public ArrayList<Penalty> visitorPenaltyList;
     public CountDownTimer masterTimer;
     public int masterTimerTime;
+<<<<<<< HEAD
+=======
+    Button ajoutPenalite;
+>>>>>>> a331278906800a32625bf99684afc520cc8274ce
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         visitorPenaltyList = new ArrayList<Penalty>(penaltiesPerSide);
         masterTimerTime = (int) Math.floor(timeInPeriod / timeInSecond);
         masterTimerView = (TextView) findViewById(R.id.TextView5);
+<<<<<<< HEAD
         masterTimer = new CountDownTimer(timeInPeriod + timeInSecond, timeInSecond) {
             public void onTick(long millisUntilFinished) {
                 updatePenalties();
@@ -48,11 +53,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         button2 = (Button) findViewById(R.id.button2);
         button2.setOnClickListener(this);
+=======
+        resumeTimer();
+
+        //Initialisation du bouton
+        ajoutPenalite = (Button) findViewById(R.id.button2);
+        ajoutPenalite.setOnClickListener(MainActivity.this);
+>>>>>>> a331278906800a32625bf99684afc520cc8274ce
     }
 
     @Override
     public void onClick(View v) {
+<<<<<<< HEAD
         ajoutPenalite();
+=======
+        //addPenalty(String code, int time,int player_number, int local)
+>>>>>>> a331278906800a32625bf99684afc520cc8274ce
     }
 
     public void updateTimer() {
@@ -62,6 +78,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         long secondes = masterTimerTime - (minutes * 60);
         String timeString = String.format("%02d:%02d", minutes, secondes);
         masterTimerView.setText(String.valueOf(timeString));
+    }
+
+    public void stopTimer() {
+        masterTimer = null;
+    }
+
+    public void resumeTimer() {
+        long timeLeft = (masterTimerTime * timeInSecond) + timeInSecond;
+        masterTimer = new CountDownTimer(timeLeft, timeInSecond) {
+            public void onTick(long millisUntilFinished) {
+                updatePenalties();
+                updateTimer();
+            }
+
+            public void onFinish() {
+                //
+            }
+        };
+        masterTimer.start();
     }
 
     /*
@@ -96,8 +131,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
 
-        //Ici, il fadrait remplir les espaces vides des listes.
+        //Ici, on rempli les espaces vides des listes.
+        if (localPenaltyList.size() < penaltiesPerSide) {
+            penalty = sqliteHelper.getLastPenalty(true);
+            if (penalty != null) {
+                localPenaltyList.add(penalty);
+            }
+        }
 
+        if (visitorPenaltyList.size() < penaltiesPerSide) {
+            penalty = sqliteHelper.getLastPenalty(false);
+            if (penalty != null) {
+                visitorPenaltyList.add(penalty);
+            }
+        }
+        
         //La vue est mise à jour avec les nouvelles listes.
         updatePenaltyListView();
     }
@@ -111,16 +159,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Penalty penalty = new Penalty(code, time, player_number, local);
         sqliteHelper.addPenalty(penalty);
         if (local > 0) {
-            //Wow la duplication de code nice
-            if (localPenaltyList.size() < penaltiesPerSide) {
-                localPenaltyList.add(penalty);
+            if (localPenaltyList.size() >= penaltiesPerSide) {
+                sqliteHelper.updatePenalty(localPenaltyList.get(penaltiesPerSide - 1));
+                localPenaltyList.remove(penaltiesPerSide - 1);
             }
+            localPenaltyList.add(0, penalty);
         } else {
-            //Wow la duplication de code nice
-            if (visitorPenaltyList.size() < penaltiesPerSide) {
-                visitorPenaltyList.add(penalty);
+            if (visitorPenaltyList.size() >= penaltiesPerSide) {
+                sqliteHelper.updatePenalty(visitorPenaltyList.get(penaltiesPerSide - 1));
+                visitorPenaltyList.remove(penaltiesPerSide - 1);
             }
+            visitorPenaltyList.add(0, penalty);
         }
+
         //La vue est mise à jour avec les nouvelles listes.
         updatePenaltyListView();
     }
