@@ -1,3 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\Users\Public\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
+        <dex dex="D:\ApplicationDeHockey\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-22.2.1_505cb554c32dfc901d8dc696777dc0a8017ffb24\classes.dex" />
+    </item>
+    <item
+        jar="D:\ApplicationDeHockey\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="f8e8c897d6c09de72122646ddc891f31420c1b68">
+        <dex dex="D:\ApplicationDeHockey\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_939ab75942fedc76d8cfaf4eb7fc36185c291659\classes.dex" />
+    </item>
+    <item
+        jar="D:\ApplicationDeHockey\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
+        <dex dex="D:\ApplicationDeHockey\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-22.2.1_a572d48a8a010a54904bf9cdd1a1bd2c4a2ec1ff\classes.dex" />
+    </item>
+    <item
+        jar="D:\ApplicationDeHockey\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="edbd16f925668453089ef91576e45917079793f1">
+        <dex dex="D:\ApplicationDeHockey\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_10a86e9d7313ffe44a7d63801b5d76ed43159b41\classes.dex" />
+    </item>
+    <item
+        jar="D:\ApplicationDeHockey\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="D:\ApplicationDeHockey\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-22.2.1_2872e5ba0fb4760e75b30ea3cc8b53bf4149989f\classes.dex" />
+    </item>
+    <item
+        jar="D:\ApplicationDeHockey\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
+        <dex dex="D:\ApplicationDeHockey\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-22.2.1_4a0607427a96fec2a99a54fb49cca396d91357da\classes.dex" />
+    </item>
+
+</items>

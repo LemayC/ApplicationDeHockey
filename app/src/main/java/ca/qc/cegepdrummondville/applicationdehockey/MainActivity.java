@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private final long timeInPeriod = 120000; // En millisecondes
+    private final long timeInPeriod = 1200000; // En millisecondes
     private final long timeInSecond = 1000; // En millisecondes
     private final int penaltiesPerSide = 3; // En millisecondes
     private TextView masterTimerView;
@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         masterTimerTime = (int) Math.floor(timeInPeriod / timeInSecond);
         masterTimerView = (TextView) findViewById(R.id.TextView5);
         resumeTimer();
-        masterTimer.start();
 
         //Initialisation du bouton
         ajoutPenalite = (Button) findViewById(R.id.button2);
@@ -59,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void resumeTimer() {
-        long timeLeft = timeInPeriod - (masterTimerTime * timeInSecond) + timeInSecond;
+        long timeLeft = (masterTimerTime * timeInSecond) + timeInSecond;
         masterTimer = new CountDownTimer(timeLeft, timeInSecond) {
             public void onTick(long millisUntilFinished) {
                 updatePenalties();
@@ -70,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //
             }
         };
+        masterTimer.start();
     }
 
     /*
