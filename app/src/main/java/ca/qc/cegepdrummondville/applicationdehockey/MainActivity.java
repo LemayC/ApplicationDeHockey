@@ -32,16 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         visitorPenaltyList = new ArrayList<Penalty>(penaltiesPerSide);
         masterTimerTime = (int) Math.floor(timeInPeriod / timeInSecond);
         masterTimerView = (TextView) findViewById(R.id.TextView5);
-        masterTimer = new CountDownTimer(timeInPeriod + timeInSecond, timeInSecond) {
-            public void onTick(long millisUntilFinished) {
-                updatePenalties();
-                updateTimer();
-            }
-
-            public void onFinish() {
-                //
-            }
-        };
+        resumeTimer();
         masterTimer.start();
 
         //Initialisation du bouton
@@ -61,6 +52,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         long secondes = masterTimerTime - (minutes * 60);
         String timeString = String.format("%02d:%02d", minutes, secondes);
         masterTimerView.setText(String.valueOf(timeString));
+    }
+
+    public void stopTimer() {
+        masterTimer = null;
+    }
+
+    public void resumeTimer() {
+        long timeLeft = timeInPeriod - (masterTimerTime * timeInSecond) + timeInSecond;
+        masterTimer = new CountDownTimer(timeLeft, timeInSecond) {
+            public void onTick(long millisUntilFinished) {
+                updatePenalties();
+                updateTimer();
+            }
+
+            public void onFinish() {
+                //
+            }
+        };
     }
 
     /*
