@@ -62,6 +62,7 @@
         android:layout_y="346dp"
         android:id="@+id/spinnerZone"
         android:entries="@array/spinnerZoneArray"
+        android:background="@color/colorPrimary"
         />
 
     <EditText

@@ -1,26 +1,21 @@
 package ca.qc.cegepdrummondville.applicationdehockey;
 
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.CountDownTimer;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-
 import android.widget.Button;
-
 import java.util.ArrayList;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private final long timeInPeriod = 120000; // En millisecondes
+    private final long timeInPeriod = 1200000; // En millisecondes
     private final long timeInSecond = 1000; // En millisecondes
     private final int penaltiesPerSide = 3; // En millisecondes
+    private Button button2;
     private TextView masterTimerView;
     private MySQLiteHelper sqliteHelper;
     public ArrayList<Penalty> localPenaltyList;
@@ -28,7 +23,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public CountDownTimer masterTimer;
     public int masterTimerTime;
 
-    Button ajoutPenalite;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,19 +43,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         };
         masterTimer.start();
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         //Initialisation du bouton
 
-        ajoutPenalite = (Button) findViewById(R.id.button2);
-
-        ajoutPenalite.setOnClickListener(MainActivity.this);
+        button2 = (Button) findViewById(R.id.button2);
+        button2.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-
+        ajoutPenalite();
     }
 
     public void updateTimer() {
@@ -136,5 +127,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void updatePenaltyListView() {
         //Ici, on ajoute chaque pénalités dans la bonne ListView.
+    }
+
+    public void ajoutPenalite() {
+
     }
 }
