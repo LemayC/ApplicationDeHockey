@@ -22,10 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public ArrayList<Penalty> visitorPenaltyList;
     public CountDownTimer masterTimer;
     public int masterTimerTime;
-<<<<<<< HEAD
-=======
     Button ajoutPenalite;
->>>>>>> a331278906800a32625bf99684afc520cc8274ce
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         visitorPenaltyList = new ArrayList<Penalty>(penaltiesPerSide);
         masterTimerTime = (int) Math.floor(timeInPeriod / timeInSecond);
         masterTimerView = (TextView) findViewById(R.id.TextView5);
-<<<<<<< HEAD
         masterTimer = new CountDownTimer(timeInPeriod + timeInSecond, timeInSecond) {
             public void onTick(long millisUntilFinished) {
                 updatePenalties();
@@ -53,22 +49,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         button2 = (Button) findViewById(R.id.button2);
         button2.setOnClickListener(this);
-=======
-        resumeTimer();
-
-        //Initialisation du bouton
-        ajoutPenalite = (Button) findViewById(R.id.button2);
-        ajoutPenalite.setOnClickListener(MainActivity.this);
->>>>>>> a331278906800a32625bf99684afc520cc8274ce
     }
 
     @Override
     public void onClick(View v) {
-<<<<<<< HEAD
         ajoutPenalite();
-=======
-        //addPenalty(String code, int time,int player_number, int local)
->>>>>>> a331278906800a32625bf99684afc520cc8274ce
     }
 
     public void updateTimer() {
